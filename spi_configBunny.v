@@ -744,38 +744,42 @@ module spi_configBunny(
 		PART_CLEAN: begin //limpia alrededor del conejo
 			done<=0;
 			case(count)
-			4'h0: begin  spistart<=1; comm<=0; i<=0; j<=0; poss_y<=8'h43; message<=poss_y; if(avail) count<=4'h1;end
-			4'h1: begin   poss_x<=8'h0; message<=poss_x; if(avail) count<=4'h2;end 
+			4'h0: begin  spistart<=1; comm<=0; i<=0; j<=0; poss_y<=8'h42; message<=poss_y; if(avail) count<=4'h1;end
+			4'h1: begin   poss_x<=8'h94; message<=poss_x; if(avail) count<=4'h2;end 
 			
 			4'h2: begin comm<=1; message<=8'h0; 
 				if(avail) begin 
+					i<=i+1;
+					if(i<50) count<=4'h2;
+					else count<=4'h3;
+				end
+			end
+			
+			4'h3: begin comm<=0; i<=0; poss_y<=8'h43; message<=poss_y; if(avail) count<=4'h4;end
+		
+			4'h4: begin comm<=0; poss_x<=8'h80; message<=poss_x; if(avail) count<=4'h5;end
+			
+			4'h5: begin comm<=1; message<=8'h0; 
+				if(avail) begin 
 					if (i<26) begin 
 						i<=i+1;
-						count<=4'h2;
+						count<=4'h5;
 					end 
 					else begin 
 						j<=j+1;
-						if (j==0) count<=4'h3; 
-						else if (j==1) count<=4'h4;
+						if (j==0) count<=4'h6; 
+						else if (j==1) count<=4'h7;
 						else if (j==2) count<=4'h6;
-						else if (j==3) count<=4'h7;
-						else if(j==4) count<=4'h8;
 						else count<=4'h9;
 					end
 				end
 			end
-
-			4'h3: begin comm<=0; i<=0; poss_y<=poss_y-1; message<=poss_y; if(avail) count<=4'h1;end
-		
-			4'h4: begin comm<=0; i<=0; poss_x<=8'hB8; message<=poss_x; if(avail) count<=4'h5;end
 			
-			4'h5: begin comm<=0; i<=0;  poss_y<=8'h43; message<=poss_y; if(avail) count<=4'h2;end
+			4'h6: begin comm<=0; i<=0; poss_x<=8'hBA; message<=poss_x; if(avail) count<=4'h5; end
 			
-			4'h6: begin comm<=0; i<=0;  poss_y<=poss_y-1; message<=poss_y; if(avail) count<=4'h2;end
-
-			4'h7: begin comm<=0; i<=0; poss_y<=8'h42; message<=poss_y; if(avail) count<=4'h1;end
-			4'h8: begin comm<=0; i<=0; poss_x<=8'hB0; message<=poss_x; if(avail) count<=4'h2;end
-				
+			4'h7: begin comm<=0; i<=0; poss_y<=poss_y-1; message<=poss_y; if(avail) count<=4'h8; end
+			4'h8: begin comm<=0; i<=0; poss_x<=8'h80; message<=poss_x; if(avail) count<=4'h5; end
+			
 			4'h9: begin 
 				count<=4'h0;
 				done<=1;

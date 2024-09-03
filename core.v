@@ -71,7 +71,7 @@ module core(
     4'h0: begin 
       draw<=4'h0;
 		if (mascota) begin
-        hambre<=4'h3;
+        hambre<=4'h4;
         draw<=4'h1; 
 		  led<=0;
 		  if(done) count<=4'h1;
@@ -82,8 +82,8 @@ module core(
     4'h1: begin draw<=4'h2; if (done) count<=4'h2; end
     4'h2: begin draw<=4'h3; if (done) count<=4'h3; end
     4'h3: begin draw<=4'h4; if (done) count<=4'h4; end
-    4'h4: begin draw<=4'h5; end /*if (done) count<=4'h5; end
-    4'h5: begin draw<=4'h6; end*/
+    4'h4: begin draw<=4'h5; if (done) count<=4'h5; end
+    4'h5: begin draw<=4'h6; end
 
     endcase 
   end
