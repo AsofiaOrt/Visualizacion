@@ -3,7 +3,7 @@
 En este archivo se encuentran tres archivos + sus respectivos testbench.
 * master: se encarga de "separar" el mensaje y enviarlo bit pot bit a la pantalla nokia tambien se encarga del reloj secundario.
 * config: este tiene las secuencias necesarias para dibujar cada diseño (como iconos la mascota etc) en la pantalla, utiliza la señal de control avail del master para enviar un neuvo mensaje, tambien controla "comm" que es 0 para un comando (por ej configuracion o posicion) y 1 para un mensaje a escribir (dibujar en pantalla).
-* core: este es una archivo provisional para controlar que se dibuja cuando usa las señales de control mascota y done. Este sera reemplazado  por la maquina central de estados pero nos ayuda a ver como funciona la transicion entre un dibujo y otro. Tambien controla el backlight.
+* core: este es una archivo provisional para controlar que se dibuja y cuando se dibuja, usa las señales de control mascota y done. Este sera reemplazado  por la maquina central de estados pero nos ayuda a ver como funciona la transicion entre un dibujo y otro. Tambien controla el backlight.
 
   
 [<img src="Fig/Layout.png" width="800" />](fig)
