@@ -21,5 +21,3 @@ Este layout se divide en dos partes en orden de visulaizacion, una primera parte
 En una segunda parte son los dibujos que dependen de los estados, por ejemplo las barras recibin el valor de nivel de core, y cada uno se puede dibujar de manera independiente segun se necesite tambien se tiene una funcion que limpia esta zona de la pantalla (aun por mejorar). Permite cambiar de dibujo con casos y la señal de control done, que es 0 mientras que se dibuja y 0 al finalizar. 
 
 
-
-- [ ] cargar archivo proyecto 
