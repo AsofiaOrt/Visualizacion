@@ -11,12 +11,12 @@ En este archivo se encuentran tres archivos + sus respectivos testbench.
 
 ## Detalles con layout 
 
-[<img src="Fig/Layout A.png" width="800" />](fig)
+[<img src="Fig/layout A.png" width="800" />](fig)
 
 Este layout se divide en dos partes en orden de visulaizacion, una primera parte es la configuracion inicial los iconos de estados y el conejo (por el momento) estos se dibujan uno tras otro, al finalozar se envia la señal mascota =1 a core.
 
 
-[<img src="Fig/Layout B.png" width="800" />](fig)
+[<img src="Fig/layout B.png" width="800" />](fig)
 
 En una segunda parte son los dibujos que dependen de los estados, por ejemplo las barras recibin el valor de nivel de core, y cada uno se puede dibujar de manera independiente segun se necesite tambien se tiene una funcion que limpia esta zona de la pantalla (aun por mejorar). Permite cambiar de dibujo con casos y la señal de control done, que es 0 mientras que se dibuja y 0 al finalizar. 
 
