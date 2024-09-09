@@ -47,7 +47,7 @@ module spi_configBunny(
 	parameter INIT=4'h0, CLEAN=4'h1, PERA=4'h2, NUBE=4'h3, CORAZON=4'h4, GAME=4'h5, 
 	FELIZ=4'h6, BUNNY=4'h7;
 
-	parameter  BARS=4'h1, CARROT=4'h2, CRUZ=4'h3, SLEEPY=4'h4, STAR=4'h5, PART_CLEAN=4'h6;
+	parameter  BARS=4'h1, CARROT=4'h2, CRUZ=4'h3, SLEEPY=4'h4, STAR=4'h5, PART_CLEAN=4'h6, TEST=4'h7;
 	
 	reg [8:0] i=0;
 	reg [8:0] j=0;
@@ -788,6 +788,26 @@ module spi_configBunny(
 				
 			endcase
 		end
+
+		TEST: begin
+			done<=0;
+			case(count)
+			4'h0: begin  spistart<=1; comm<=0; i<=0; j<=0;  poss_x<=8'h83; message<=poss_x; if(avail) count<=4'h1;end 
+			4'h1: begin   poss_y<=8'h42; message<=poss_y; if(avail) count<=4'h2; end
+
+			4'h2: begin comm<=1; message<=8'b00000100; if(avail) count<=4'h3; end
+			4'h3: begin  message<=8'b00000100; if(avail) count<=4'h4; end
+			4'h4: begin   message<=8'b01111100; if(avail) count<=4'h5; end
+			4'h5: begin comm<=1; message<=8'b00000100; if(avail) count<=4'h6; end
+			4'h6: begin  message<=8'b00000100; if(avail) count<=4'h7; end
+			4'h7: begin 
+				count<=4'h0;
+				done<=1;
+				spistart<=0;
+			end
+			endcase
+		end
+
 		endcase
 	end
 endmodule
