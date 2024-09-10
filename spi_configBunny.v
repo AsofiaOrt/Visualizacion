@@ -430,7 +430,12 @@ module spi_configBunny(
 			done<=0;
 			case(count)
 			4'h0: begin  spistart<=1; i<=0; j<=0; nivel<=nivel_hambre; comm<=0; poss_x<=8'h89; message<=poss_x; if(avail) count<=4'h1; end 
-			4'h1: begin   poss_y<=8'h40; message<=poss_y; if(avail) count<=4'h2;end
+			4'h1: begin   poss_y<=8'h40; message<=poss_y;
+				if(avail) begin
+					if(nivel==0) count<=4'h3;
+					else count<=4'h2;
+				end
+			end
 
 			4'h2: begin  comm<=1; message<=8'b01111110; 
 				if(avail) begin 
