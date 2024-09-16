@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 100ps
 
 module spi_test_config;
 
@@ -13,6 +13,7 @@ module spi_test_config;
 	wire dc;
 	wire sclk;
 	wire sce;
+	wire done;
 
 	spi_configBunny uut(
 	.clock(clk),
@@ -22,23 +23,27 @@ module spi_test_config;
 	.sce(sce),
 	.dc(dc),
 	.nivel_hambre(nivel_hambre),
-	.draw(draw)
+	.draw(draw), 
+	.done(done)
 	);
 
+	reg a;
 	initial begin
 	  clk = 0;
 	  forever #1 clk = ~clk; //500Mhz
-	end
-
-	initial begin
-		reset=0; //se presiona reset primero para reinicializar todo
+	 end
+	  
+	 initial begin 
+	  reset=0; //se presiona reset primero para reinicializar todo
 		#200;
 		reset=1;
+	  
+	end
+	
+always @(posedge clk) begin
 
-		nivel_hambre=4'h3;
-		draw=4'h0;
-		#200;
-		draw=4'h1;
+	
+		if(done==1) begin a<=1; draw<=4'h1; nivel_hambre<=4'h3; end
 		
 	end
 	
