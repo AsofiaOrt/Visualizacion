@@ -1,5 +1,20 @@
 # NOKIA 5110 
 
+Este utiliza dos archivos principales master y config descripcion como aqui abajo 
+simulacion + como dibuja en pixels, actualizar disbujos 
+
+simulacion master
+simulacion config
+
+config utiliza la señal de control done para comunicarse con la maquina de estados ademas recibe como entrada el numero correspondiente al dibujo que se va a hacer, con la señal draw. 
+
+
+
+
+
+
+***
+
 En este archivo se encuentran tres archivos + sus respectivos testbench.
 * master: se encarga de "separar" el mensaje y enviarlo bit pot bit a la pantalla nokia tambien se encarga del reloj secundario.
 * config: este tiene las secuencias necesarias para dibujar cada diseño (como iconos la mascota etc) en la pantalla, utiliza la señal de control avail del master para enviar un neuvo mensaje, tambien controla "comm" que es 0 para un comando (por ej configuracion o posicion) y 1 para un mensaje a escribir (dibujar en pantalla).
