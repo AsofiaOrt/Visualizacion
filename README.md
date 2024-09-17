@@ -8,8 +8,7 @@ simulacion config
 
 config utiliza la señal de control done para comunicarse con la maquina de estados ademas recibe como entrada el numero correspondiente al dibujo que se va a hacer, con la señal draw. 
 
-
-
+quitar todo lo de core. 
 
 
 
