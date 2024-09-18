@@ -10,12 +10,12 @@ La pantalla utiliza el protocolo SPI, para comunicarse con ella se utilizan dos 
 
 Para dibujar se usa un direccionamiento horizontal, dibujando 8 pixeles a la vez de manera vertical en una dirección que va de 0 a 84 horizontalmente, también se puede posicionar en cualquiera de las 5 filas. Así, luego de dibujar una línea, la siguiente se dibuja a la derecha automáticamente. 
 
-[<img src="Fig/Adress_nokia.png" width="800" />](fig)
-[<img src="Fig/Example_message_code.png" width="800" />](fig)
+[<img src="Fig/Adress_nokia.png" width="600" />](fig)
+[<img src="Fig/Example_message_code.png" width="600" />](fig)
 
 Dentro del código de este archivo, cada diseño es un caso, dentro del primer caso a su vez esta el caso con las secuencias de los diseños inciales (iconos, conejo) estos se dibujan de manera secuencial al iniciar o reiniciar el tamagotchi.
 
-[<img src="Fig/layout A.png" width="800" />](fig)
+[<img src="Fig/layout A.png" width="600" />](fig)
 
 Además, se tiene un estado transitorio, llamado `STANDBY` donde se ubica luego de terminar un diseño (`done=1`) en este estado se lee la entrada del diseño a dibujar, proveniente de la maquina de estados.
 
@@ -43,7 +43,7 @@ end
    
   Además, se tiene un icono T que indica si se está en modo test, y una función de limpieza parcial que limpia los iconos en pantalla antes de dibujar uno nuevo.
 
-  [<img src="Fig/Full_layout.png" width="800" />](fig)
+  [<img src="Fig/Full_layout.png" width="600" />](fig)
 
 ### Simulaciones
 
